@@ -21,7 +21,10 @@
             </div>
           </nav>
         
-        <button class="btn btn-warning" id="mostrar-carrito">Ver/Ocultar Carrito</button>
+        <button class="btn btn-warning" id="mostrar-carrito">
+            Ver/Ocultar Carrito            
+            <span id="notificacion" class="badge rounded-pill badge-notification bg-danger text-white">0</span>
+        </button>
         <button class="btn btn-warning" id="mostrar-blancos">Ver Blancos</button>
         <button class="btn btn-warning" id="mostrar-rosados">Ver Rosados</button>
         <button class="btn btn-warning" id="mostrar-tintos">Ver Tintos</button>
@@ -29,7 +32,7 @@
         <button class="btn btn-warning" id="mostrar-todos">Ver Todos</button>
         <hr>
 
-        <table id="carro" class="table">
+        <table id="carro" class="table ocultar">
             <thead>
                 <tr>
                     <th scope="col">#</h>
@@ -66,21 +69,21 @@
         </div>
     </template>
 
-    <template id="template-carrito">
+    <template id="template-carrito" >
         <tr>
-            <th scope="row">ID</th>
-            <td>Café</td>
-            <td>10</td>
-            <td>1</td>
+            <th scope="row"></th>
+            <td></td>
+            <td></td>
+            <td></td>
             <td>
                 <button class="btn btn-info btn-sm">+</button>
                 <button class="btn btn-warning btn-sm">-</button>
             </td>
-            <td>$ <span>500</span></td>
+            <td>$ <span></span></td>
         </tr>
     </template>
 
-    <template id="template-footer">
+    <template id="template-footer" >
         <th scope="row" colspan="3">Total productos</th>
         <td>1</td>
         <td>

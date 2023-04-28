@@ -12,6 +12,7 @@ const mostrarTinto = document.getElementById('mostrar-tintos')
 const mostrarEspumante = document.getElementById('mostrar-espumantes')
 const mostrarTodos = document.getElementById('mostrar-todos')
 const carro = document.getElementById('carro')
+const notificacion = document.getElementById('notificacion')
 let carritoCompra = {}
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -71,7 +72,7 @@ const setCarritoCompra = objeto => {
         precio : objeto.querySelector('.precio').textContent,
         imagen : objeto.querySelector('img').src,
         saldo : objeto.querySelector('.unidades').textContent,
-        cantidad: 1
+        cantidad: 1        
     }
     if(carritoCompra.hasOwnProperty(producto.id)){        
             producto.cantidad = carritoCompra[producto.id].cantidad + 1
@@ -79,7 +80,7 @@ const setCarritoCompra = objeto => {
     }
     carritoCompra[producto.id] = {...producto}
     pintarCarrito() 
-    
+    notificacion.classList.remove('ocultar')
     Toastify({
         text: "Producto agregado al carrito",
         duration: 1000,
@@ -117,12 +118,14 @@ const pintarFooter = () => {
         footer.innerHTML = `
             <th scope="row" colspan="5">Carrito vacío - Agregue productos a comprar!</th>
         `
+        notificacion.classList.add('ocultar')
         return
     }
 //Pintar footer
     const numCantidad = Object.values(carritoCompra).reduce((acc, {cantidad}) => acc + cantidad,0)
     const numPrecio = Object.values(carritoCompra).reduce((acc, {precio, cantidad}) => acc + cantidad * precio, 0)
     templateFooter.querySelectorAll('td')[0].textContent = numCantidad
+    notificacion.innerHTML = numCantidad
     templateFooter.querySelector('span').textContent = numPrecio
 
     const clone = templateFooter.cloneNode(true)
@@ -134,7 +137,7 @@ const pintarFooter = () => {
         carritoCompra = {}
         pintarCarrito()
         lanzarAlerta("Felicitaciones!, Se ha realizado la compra.", "success")
-        
+        carro.classList.add('ocultar')
     })
 }
 
@@ -157,7 +160,7 @@ const btnAccion = e => {
             producto.saldo--
             carritoCompra[e.target.dataset.id] = {...producto}
             pintarCarrito()
-            
+            notificacion.classList.remove('ocultar')
             Toastify({
                 text: "Producto aumentado en 1",
                 duration: 1000,
