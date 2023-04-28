@@ -33,7 +33,7 @@ items.addEventListener('click', e =>{
 
 const fetchData = async () => {
     try {
-        const res = await fetch('api.json')
+        const res = await fetch('/JSON/api.json')
         const data = await res.json()        
         pintarCard(data)
     } catch (error) {
