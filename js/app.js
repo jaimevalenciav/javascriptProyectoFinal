@@ -33,11 +33,11 @@ items.addEventListener('click', e =>{
 
 const fetchData = async () => {
     try {
-        const res = await fetch('api.json')
+        const res = await fetch('../JSON/api.json')
         const data = await res.json()        
         pintarCard(data)
     } catch (error) {
-        console.log(error)
+        lanzarError("Ooops!, error en la carga de los datos.", "error")
     }    
 }
 
@@ -147,6 +147,15 @@ function lanzarAlerta(titulo, icon){
     })
 }
 
+function lanzarError(titulo, icon){
+    Swal.fire({
+        title: titulo,        
+        icon: icon,
+        showConfirmButton: true,
+        confirmButtonText: 'Aceptar'
+    })
+}
+
 const btnAccion = e => {
     if(e.target.classList.contains('btn-info')) {        
         const producto = carritoCompra[e.target.dataset.id]
@@ -220,12 +229,12 @@ mostrarBlanco.addEventListener('click',() => {
 
 const cargaBlancos = async () => {      
     try {
-        const res = await fetch('api.json')
+        const res = await fetch('../JSON/api.json')
         let data = await res.json()        
         data2 = data.filter(producto => producto.color == 'blanco')             
         pintarCard(data2)
     } catch (error) {
-        console.log(error)
+        lanzarError("Ooops!, error en la carga de los datos.", "error")
     }    
 }
 
@@ -235,12 +244,12 @@ mostrarRosado.addEventListener('click',() => {
 
 const cargaRosados = async () => {      
     try {
-        const res = await fetch('api.json')
+        const res = await fetch('../JSON/api.json')
         let data = await res.json()        
         data2 = data.filter(producto => producto.color == 'rosado')                     
         pintarCard(data2)
     } catch (error) {
-        console.log(error)
+        lanzarError("Ooops!, error en la carga de los datos.", "error")
     }    
 }
 
@@ -250,12 +259,12 @@ mostrarTinto.addEventListener('click',() => {
 
 const cargaTintos = async () => {      
     try {
-        const res = await fetch('api.json')
+        const res = await fetch('../JSON/api.json')
         let data = await res.json()        
         data2 = data.filter(producto => producto.color == 'tinto')              
         pintarCard(data2)
     } catch (error) {
-        console.log(error)
+        lanzarError("Ooops!, error en la carga de los datos.", "error")
     }
     
 }
@@ -266,12 +275,12 @@ mostrarEspumante.addEventListener('click',() => {
 
 const cargaEspumantes = async () => {      
     try {
-        const res = await fetch('api.json')
+        const res = await fetch('../JSON/api.json')
         let data = await res.json()        
         data2 = data.filter(producto => producto.color == 'espumante')
         pintarCard(data2)
     } catch (error) {
-        console.log(error)
+        lanzarError("Ooops!, error en la carga de los datos.", "error")
     }
     
 }
