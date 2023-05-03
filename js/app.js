@@ -33,7 +33,7 @@ items.addEventListener('click', e =>{
 
 const fetchData = async () => {
     try {
-        const res = await fetch('../JSON/api.json')
+        const res = await fetch('../json/api.json')
         const data = await res.json()        
         pintarCard(data)
     } catch (error) {
@@ -229,7 +229,7 @@ mostrarBlanco.addEventListener('click',() => {
 
 const cargaBlancos = async () => {      
     try {
-        const res = await fetch('../JSON/api.json')
+        const res = await fetch('../json/api.json')
         let data = await res.json()        
         data2 = data.filter(producto => producto.color == 'blanco')             
         pintarCard(data2)
@@ -244,7 +244,7 @@ mostrarRosado.addEventListener('click',() => {
 
 const cargaRosados = async () => {      
     try {
-        const res = await fetch('../JSON/api.json')
+        const res = await fetch('../json/api.json')
         let data = await res.json()        
         data2 = data.filter(producto => producto.color == 'rosado')                     
         pintarCard(data2)
@@ -259,7 +259,7 @@ mostrarTinto.addEventListener('click',() => {
 
 const cargaTintos = async () => {      
     try {
-        const res = await fetch('../JSON/api.json')
+        const res = await fetch('../json/api.json')
         let data = await res.json()        
         data2 = data.filter(producto => producto.color == 'tinto')              
         pintarCard(data2)
@@ -275,7 +275,7 @@ mostrarEspumante.addEventListener('click',() => {
 
 const cargaEspumantes = async () => {      
     try {
-        const res = await fetch('../JSON/api.json')
+        const res = await fetch('../json/api.json')
         let data = await res.json()        
         data2 = data.filter(producto => producto.color == 'espumante')
         pintarCard(data2)
